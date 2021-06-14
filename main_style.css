@@ -1,0 +1,27 @@
+.buttons_sprites{
+    position: absolute;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Corbel Light',serif;
+    font-size: 30px;
+    color: navajowhite;
+}
+.menu_sprites{
+    position: absolute;
+    height: 200px;
+    display: none;
+    margin-top: 580px;
+    margin-left: 240px;
+    background: transparent;
+    border: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.element::-webkit-scrollbar {
+    width: 0;
+}
+
+
+
+

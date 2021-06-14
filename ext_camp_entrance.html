@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Everlasting Summer Online</title>
+  <link rel="stylesheet" href="main_style.css"/>
+  <style>
+    body{
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+  </style>
+</head>
+<body>
+<!--write&bd-->
+<script>
+  function output_text() {
+    document.getElementById('text_box_read').innerHTML = document.getElementById('text_box_write').value
+    document.getElementById('text_box_write').value = ''
+  }
+</script>
+
+<script type="text/javascript">
+  var currentTime = new Date().getHours()
+  if (document.body) {
+    if (10 <= currentTime && currentTime < 18) {
+      document.body.background = 'ext_camp_entrance/ext_camp_entrance_day.jpg'
+    }
+    else if ((18 <= currentTime && currentTime < 22) || (6 <= currentTime && currentTime < 10)){
+      document.body.background = "ext_camp_entrance/ext_camp_entrance_sunset.jpg"
+    }
+    else {
+      document.body.background = 'ext_camp_entrance/ext_camp_entrance_night.jpg'
+    }
+  }
+  function ingame_menu_show() {
+    document.getElementById('in_game_menu').style.display = "block"
+    document.getElementById('menu_map').style.display = "block"
+    document.getElementById('menu_exit').style.display = "block"
+    document.getElementById('menu_close').style.display = "block"
+  }
+  function ingame_menu_hide() {
+    document.getElementById('in_game_menu').style.display = "none"
+    document.getElementById('menu_map').style.display = "none"
+    document.getElementById('menu_exit').style.display = "none"
+    document.getElementById('menu_close').style.display = "none"
+  }
+  function last_dialog_show(){
+    document.getElementById('last_dialog').style.display = "block"
+    document.getElementById('last_dialog_close').style.display = "block"
+  }
+  function last_dialog_hide(){
+    document.getElementById('last_dialog').style.display = "none"
+    document.getElementById('last_dialog_close').style.display = "none"
+  }
+  function menu_sprites_show(){
+    document.getElementById('menu_sprites').style.display = "block"
+    document.getElementById('sprites_close').style.display = "block"
+    document.getElementById('menu_sprites_normal').style.display = "none"
+    document.getElementById('menu_sprites_crying').style.display = "none"
+    document.getElementById('menu_sprites_fear').style.display = "none"
+    document.getElementById('menu_sprites_laugh').style.display = "none"
+    document.getElementById('menu_sprites_playful').style.display = "none"
+    document.getElementById('menu_sprites_shy').style.display = "none"
+    document.getElementById('menu_sprites_smile').style.display = "none"
+    document.getElementById('menu_sprites_surprise').style.display = "none"
+  }
+  function menu_sprites_hide(){
+    document.getElementById('menu_sprites').style.display = "none"
+    document.getElementById('sprites_close').style.display = "none"
+    document.getElementById('menu_sprites_normal').style.display = "none"
+    document.getElementById('menu_sprites_crying').style.display = "none"
+    document.getElementById('menu_sprites_fear').style.display = "none"
+    document.getElementById('menu_sprites_laugh').style.display = "none"
+    document.getElementById('menu_sprites_playful').style.display = "none"
+    document.getElementById('menu_sprites_shy').style.display = "none"
+    document.getElementById('menu_sprites_smile').style.display = "none"
+    document.getElementById('menu_sprites_surprise').style.display = "none"
+  }
+  function sprites_show(pose){
+    var str = 'menu_sprites_' + pose
+    document.getElementById(str).style.display = "block"
+    document.getElementById('menu_sprites').style.display = "none"
+  }
+  function show_dv(pose, num){
+    var str = 'dv_' + pose + '_' + num
+    document.getElementById('sprite_left').innerHTML = '<img id="' + str + '" src="sprites/dv/' + pose + '/' + str + '.png" style="position: absolute; top: 0">'
+  }
+</script>
+
+<!--sprites_right-->
+<div id="sprite_left" style="position: absolute; margin-top: 219px; margin-left: 240px; outline: none"></div>
+<script>
+  document.write('<div id="in_game_menu" style="position: absolute; margin-top: 335px; margin-left: 710px; background: transparent; border: none; display: none"></div>');
+
+  if (10 <= currentTime && currentTime < 18) {
+    document.getElementById('in_game_menu').innerHTML = '<img src="gui/day/ingame_menu_day.png" width="495" height="347" alt="menu_box">'
+  }
+  else if ((18 <= currentTime && currentTime < 22) || (6 <= currentTime && currentTime < 10)){
+    document.getElementById('in_game_menu').innerHTML = '<img src="gui/sunset/ingame_menu_sunset.png" width="495" height="347" alt="menu_box">'
+  }
+  else {
+    document.getElementById('in_game_menu').innerHTML = '<img src="gui/night/ingame_menu_night.png" width="495" height="347" alt="menu_box">'
+  }
+</script>
+<div id="menu_sprites" class="element" style="height: 200px; display: none;  position: absolute; margin-top: 580px; margin-left: 240px; background: transparent; border: none; overflow-y: scroll; overflow-x: hidden">
+  <img src="gui/menu_sprites.png" width="150" height="270" alt="menu_sprites">
+  <button onclick="sprites_show('normal')" class="buttons_sprites" style="margin-top: 10px; margin-left: -130px">Обычно</button>
+  <button onclick="sprites_show('crying')" class="buttons_sprites" style="margin-top: 40px; margin-left: -110px">Плач</button>
+  <button onclick="sprites_show('fear')" class="buttons_sprites" style="margin-top: 70px; margin-left: -115px">Страх</button>
+  <button onclick="sprites_show('laugh')" class="buttons_sprites" style="margin-top: 100px; margin-left: -110px">Смех</button>
+  <button onclick="sprites_show('playful')" class="buttons_sprites" style="margin-top: 130px; margin-left: -125px">Игриво</button>
+  <button onclick="sprites_show('shy')" class="buttons_sprites" style="margin-top: 160px; margin-left: -145px">Смущение</button>
+  <button onclick="sprites_show('smile')" class="buttons_sprites" style="margin-top: 190px; margin-left: -125px">Улыбка</button>
+  <button onclick="sprites_show('surprise')" class="buttons_sprites" style="margin-top: 220px; margin-left: -150px">Удивление</button>
+</div>
+<div id="menu_sprites_normal" class="element" style="height: 200px; display: none; position: absolute; margin-top: 580px; margin-left: 240px; background: transparent; border: none; overflow-y: scroll; overflow-x: hidden">
+  <img src="gui/menu_sprites.png" width="150" height="270" alt="menu_sprites">
+  <button class="buttons_sprites" onclick="show_dv('normal','1')" style="margin-top: 10px; margin-left: -120px">Форма</button>
+  <button class="buttons_sprites" onclick="show_dv('normal','2')" style="margin-top: 40px; margin-left: -130px">Форма 2</button>
+  <button class="buttons_sprites" onclick="show_dv('normal','b')" style="margin-top: 70px; margin-left: -148px">Купальник</button>
+  <button class="buttons_sprites" onclick="show_dv('normal','c')" style="margin-top: 100px; margin-left: -120px">Пальто</button>
+  <button class="buttons_sprites" onclick="show_dv('normal','n')" style="margin-top: 130px; margin-left: -115px">Нагая</button>
+</div>
+<div id="menu_sprites_crying" class="element" style="height: 200px; display: none; position: absolute; margin-top: 580px; margin-left: 240px; background: transparent; border: none; overflow-y: scroll; overflow-x: hidden">
+  <img src="gui/menu_sprites.png" width="150" height="270" alt="menu_sprites">
+  <button class="buttons_sprites" onclick="show_dv('crying','1')" style="margin-top: 10px; margin-left: -120px">Форма</button>
+  <button class="buttons_sprites" onclick="show_dv('crying','2')" style="margin-top: 40px; margin-left: -130px">Форма 2</button>
+  <button class="buttons_sprites" onclick="show_dv('crying','b')" style="margin-top: 70px; margin-left: -148px">Купальник</button>
+  <button class="buttons_sprites" onclick="show_dv('crying','c')" style="margin-top: 100px; margin-left: -120px">Пальто</button>
+  <button class="buttons_sprites" onclick="show_dv('crying','n')" style="margin-top: 130px; margin-left: -115px">Нагая</button>
+</div>
+<div id="menu_sprites_fear" class="element" style="height: 200px; display: none; position: absolute; margin-top: 580px; margin-left: 240px; background: transparent; border: none; overflow-y: scroll; overflow-x: hidden">
+  <img src="gui/menu_sprites.png" width="150" height="270" alt="menu_sprites">
+  <button class="buttons_sprites" onclick="show_dv('fear','1')" style="margin-top: 10px; margin-left: -120px">Форма</button>
+  <button class="buttons_sprites" onclick="show_dv('fear','2')" style="margin-top: 40px; margin-left: -130px">Форма 2</button>
+  <button class="buttons_sprites" onclick="show_dv('fear','b')" style="margin-top: 70px; margin-left: -148px">Купальник</button>
+  <button class="buttons_sprites" onclick="show_dv('fear','c')" style="margin-top: 100px; margin-left: -120px">Пальто</button>
+  <button class="buttons_sprites" onclick="show_dv('fear','n')" style="margin-top: 130px; margin-left: -115px">Нагая</button>
+</div>
+<div id="menu_sprites_laugh" class="element" style="height: 200px; display: none; position: absolute; margin-top: 580px; margin-left: 240px; background: transparent; border: none; overflow-y: scroll; overflow-x: hidden">
+  <img src="gui/menu_sprites.png" width="150" height="270" alt="menu_sprites">
+  <button class="buttons_sprites" onclick="show_dv('laugh','1')" style="margin-top: 10px; margin-left: -120px">Форма</button>
+  <button class="buttons_sprites" onclick="show_dv('laugh','2')" style="margin-top: 40px; margin-left: -130px">Форма 2</button>
+  <button class="buttons_sprites" onclick="show_dv('laugh','b')" style="margin-top: 70px; margin-left: -148px">Купальник</button>
+  <button class="buttons_sprites" onclick="show_dv('laugh','c')" style="margin-top: 100px; margin-left: -120px">Пальто</button>
+  <button class="buttons_sprites" onclick="show_dv('laugh','n')" style="margin-top: 130px; margin-left: -115px">Нагая</button>
+</div>
+<div id="menu_sprites_playful" class="element" style="height: 200px; display: none; position: absolute; margin-top: 580px; margin-left: 240px; background: transparent; border: none; overflow-y: scroll; overflow-x: hidden">
+  <img src="gui/menu_sprites.png" width="150" height="270" alt="menu_sprites">
+  <button class="buttons_sprites" onclick="show_dv('playful','1')" style="margin-top: 10px; margin-left: -120px">Форма</button>
+  <button class="buttons_sprites" onclick="show_dv('playful','2')" style="margin-top: 40px; margin-left: -130px">Форма 2</button>
+  <button class="buttons_sprites" onclick="show_dv('playful','b')" style="margin-top: 70px; margin-left: -148px">Купальник</button>
+  <button class="buttons_sprites" onclick="show_dv('playful','c')" style="margin-top: 100px; margin-left: -120px">Пальто</button>
+  <button class="buttons_sprites" onclick="show_dv('playful','n')" style="margin-top: 130px; margin-left: -115px">Нагая</button>
+</div>
+<div id="menu_sprites_shy" class="element" style="height: 200px; display: none; position: absolute; margin-top: 580px; margin-left: 240px; background: transparent; border: none; overflow-y: scroll; overflow-x: hidden">
+  <img src="gui/menu_sprites.png" width="150" height="270" alt="menu_sprites">
+  <button class="buttons_sprites" onclick="show_dv('shy','1')" style="margin-top: 10px; margin-left: -120px">Форма</button>
+  <button class="buttons_sprites" onclick="show_dv('shy','2')" style="margin-top: 40px; margin-left: -130px">Форма 2</button>
+  <button class="buttons_sprites" onclick="show_dv('shy','b')" style="margin-top: 70px; margin-left: -148px">Купальник</button>
+  <button class="buttons_sprites" onclick="show_dv('shy','c')" style="margin-top: 100px; margin-left: -120px">Пальто</button>
+  <button class="buttons_sprites" onclick="show_dv('shy','n')" style="margin-top: 130px; margin-left: -115px">Нагая</button>
+</div>
+<div id="menu_sprites_smile" class="element" style="height: 200px; display: none; position: absolute; margin-top: 580px; margin-left: 240px; background: transparent; border: none; overflow-y: scroll; overflow-x: hidden">
+  <img src="gui/menu_sprites.png" width="150" height="270" alt="menu_sprites">
+  <button class="buttons_sprites" onclick="show_dv('smile','1')" style="margin-top: 10px; margin-left: -120px">Форма</button>
+  <button class="buttons_sprites" onclick="show_dv('smile','2')" style="margin-top: 40px; margin-left: -130px">Форма 2</button>
+  <button class="buttons_sprites" onclick="show_dv('smile','b')" style="margin-top: 70px; margin-left: -148px">Купальник</button>
+  <button class="buttons_sprites" onclick="show_dv('smile','c')" style="margin-top: 100px; margin-left: -120px">Пальто</button>
+  <button class="buttons_sprites" onclick="show_dv('smile','n')" style="margin-top: 130px; margin-left: -115px">Нагая</button>
+</div>
+<div id="menu_sprites_surprise" class="element" style="height: 200px; display: none; position: absolute; margin-top: 580px; margin-left: 240px; background: transparent; border: none; overflow-y: scroll; overflow-x: hidden">
+  <img src="gui/menu_sprites.png" width="150" height="270" alt="menu_sprites">
+  <button class="buttons_sprites" onclick="show_dv('surprise','1')" style="margin-top: 10px; margin-left: -120px">Форма</button>
+  <button class="buttons_sprites" onclick="show_dv('surprise','2')" style="margin-top: 40px; margin-left: -130px">Форма 2</button>
+  <button class="buttons_sprites" onclick="show_dv('surprise','b')" style="margin-top: 70px; margin-left: -148px">Купальник</button>
+  <button class="buttons_sprites" onclick="show_dv('surprise','c')" style="margin-top: 100px; margin-left: -120px">Пальто</button>
+  <button class="buttons_sprites" onclick="show_dv('surprise','n')" style="margin-top: 130px; margin-left: -115px">Нагая</button>
+</div>
+<button id="sprites_close" onclick="menu_sprites_hide()" style="display: none; position: absolute; margin-top: 580px; margin-left: 360px; background: transparent; border: none; outline: none">
+  <img src="gui/menu_close_idle.png" width="33" height="21" onmouseover="this.src='gui/menu_close_hover.png'; this.width=33; this.height=21"
+       onmouseout="this.src='gui/menu_close_idle.png'; this.width=33; this.height=21;">
+</button>
+
+<!--forms-->
+<script>
+  document.write('<div id="dialog_box_write" style="position: absolute; margin-top: 700px; margin-left: 503px; background: transparent; padding: 0; border: none"></div>');
+
+  if (10 <= currentTime && currentTime < 18) {
+    document.getElementById('dialog_box_write').innerHTML = '<img src="gui/day/dialogue_box_write_day.png" width="935" height="120" alt="dialog_box"">'
+  }
+  else if ((18 <= currentTime && currentTime < 22) || (6 <= currentTime && currentTime < 10)){
+    document.getElementById('dialog_box_write').innerHTML = '<img src="gui/sunset/dialogue_box_write_sunset.png" width="935" height="120" alt="dialog_box"">'
+  }
+  else {
+    document.getElementById('dialog_box_write').innerHTML = '<img src="gui/night/dialogue_box_write_night.png" width="935" height="120" alt="dialog_box"">'
+  }
+</script>
+<script>
+  document.write('<div id="dialog_box_read" style="position: absolute; margin-left: 245px; margin-top: 780px; background: transparent; border: none"></div>');
+
+  if (10 <= currentTime && currentTime < 18) {
+    document.getElementById('dialog_box_read').innerHTML = '<img src="gui/day/dialogue_box_read_day.png" width="1450" height="170" alt="dialog_box"">'
+  }
+  else if ((18 <= currentTime && currentTime < 22) || (6 <= currentTime && currentTime < 10)){
+    document.getElementById('dialog_box_read').innerHTML = '<img src="gui/sunset/dialogue_box_read_sunset.png" width="1450" height="170" alt="dialog_box"">'
+  }
+  else {
+    document.getElementById('dialog_box_read').innerHTML = '<img src="gui/night/dialogue_box_read_night.png" width="1450" height="170" alt="dialog_box"">'
+  }
+</script>
+<div style="position: absolute; margin-left: 518px; margin-top: 738px;">
+  <label for="text_box_write" style="position: absolute; padding: 0">
+    <textarea name="write" class="element" id="text_box_write" style="position: absolute; border: none; background: transparent; resize: none; width: 900px; height: 60px; font-family: 'Corbel Light',serif; font-size: 20px; color: navajowhite; overflow-y: scroll; overflow-x: hidden"></textarea>
+  </label>
+  <label style="position: absolute; padding: 0">
+    <textarea class="element" id="text_box_read" readonly style="position: absolute; border: none; margin-top: 98px; margin-left: -255px; background: transparent; resize: none; outline: none; width: 1405px; height: 90px; font-family: 'Corbel Light',serif; font-size: 20px; color: navajowhite; overflow-y: scroll; overflow-x: hidden"></textarea>
+  </label>
+  <script>
+    document.write('<button name="fwd" id="forward" onclick="output_text()" style="position: absolute; margin-top: 80px; margin-left: 1180px; background: transparent; border: none; outline: none">');
+
+    if (10 <= currentTime && currentTime < 18) {
+      document.getElementById('forward').innerHTML = '<img src="gui/day/forward_idle_day.png" width="130" height="95" onmouseover="this.src=\'gui/day/forward_hover_day.png\'; this.width=130; this.height=95;"' +
+              ' onmouseout="this.src=\'gui/day/forward_idle_day.png\'; this.width=130; this.height=95;" alt="forward">'
+    }
+    else if ((18 <= currentTime && currentTime < 22) || (6 <= currentTime && currentTime < 10)){
+      document.getElementById('forward').innerHTML = '<img src="gui/sunset/forward_idle_sunset.png" width="130" height="95" onmouseover="this.src=\'gui/sunset/forward_hover_sunset.png\'; this.width=130; this.height=95;"' +
+              ' onmouseout="this.src=\'gui/sunset/forward_idle_sunset.png\'; this.width=130; this.height=95;" alt="forward">'
+    }
+    else {
+      document.getElementById('forward').innerHTML = '<img src="gui/night/forward_idle_night.png" width="130" height="95" onmouseover="this.src=\'gui/night/forward_hover_night.png\'; this.width=130; this.height=95;"' +
+              ' onmouseout="this.src=\'gui/night/forward_idle_night.png\'; this.width=130; this.height=95;" alt="forward">'
+    }
+  </script>
+</div>
+<script>
+  document.write('<button id="backward" onclick="last_dialog_show()" style="position: absolute; margin-top: 820px; margin-left: 100px; background: transparent; border: none; outline: none">');
+
+  if (10 <= currentTime && currentTime < 18) {
+    document.getElementById('backward').innerHTML = '<img src="gui/day/backward_idle_day.png" width="130" height="95" onmouseover="this.src=\'gui/day/backward_hover_day.png\'; this.width=130; this.height=95;"' +
+            ' onmouseout="this.src=\'gui/day/backward_idle_day.png\'; this.width=130; this.height=95;" alt="backward">'
+  }
+  else if ((18 <= currentTime && currentTime < 22) || (6 <= currentTime && currentTime < 10)){
+    document.getElementById('backward').innerHTML = '<img src="gui/sunset/backward_idle_sunset.png" width="130" height="95" onmouseover="this.src=\'gui/sunset/backward_hover_sunset.png\'; this.width=130; this.height=95;"' +
+            ' onmouseout="this.src=\'gui/sunset/backward_idle_sunset.png\'; this.width=130; this.height=95;" alt="backward">'    }
+  else {
+    document.getElementById('backward').innerHTML = '<img src="gui/night/backward_idle_night.png" width="130" height="95" onmouseover="this.src=\'gui/night/backward_hover_night.png\'; this.width=130; this.height=95;"' +
+            ' onmouseout="this.src=\'gui/night/backward_idle_night.png\'; this.width=130; this.height=95;" alt="backward">'    }
+</script>
+<script>
+  document.write('<button id="menu" onclick="ingame_menu_show()" style="position: absolute; margin-top: 795px; margin-left: 250px; background: transparent; border: none; outline: none">');
+
+  if (10 <= currentTime && currentTime < 18) {
+    document.getElementById('menu').innerHTML = '<img src="gui/day/menu_idle_day.png" width="27" height="20" onmouseover="this.src=\'gui/day/menu_hover_day.png\'; this.width=27; this.height=20;"' +
+            ' onmouseout="this.src=\'gui/day/menu_idle_day.png\'; this.width=27; this.height=20;" alt="menu">'
+  }
+  else if ((18 <= currentTime && currentTime < 22) || (6 <= currentTime && currentTime < 10)){
+    document.getElementById('menu').innerHTML = '<img src="gui/sunset/menu_idle_sunset.png" width="27" height="20" onmouseover="this.src=\'gui/sunset/menu_hover_sunset.png\'; this.width=27; this.height=20;"' +
+            ' onmouseout="this.src=\'gui/sunset/menu_idle_sunset.png\'; this.width=27; this.height=20;" alt="menu">'
+  }
+  else {
+    document.getElementById('menu').innerHTML = '<img src="gui/night/menu_idle_night.png" width="27" height="20" onmouseover="this.src=\'gui/night/menu_hover_night.png\'; this.width=27; this.height=20;"' +
+            ' onmouseout="this.src=\'gui/night/menu_idle_night.png\'; this.width=27; this.height=20;" alt="menu">'
+  }
+</script>
+<button id="menu_sprites_show" onclick="menu_sprites_show()" style="position: absolute; margin-top: 795px; margin-left: 290px; background: transparent; border: none; outline: none">
+  <img src="gui/menu_sprite_idle.png" width="27" height="20" onmouseover="this.src='gui/menu_sprite_hover.png'; this.width=27; this.height=20"
+       onmouseout="this.src='gui/menu_sprite_idle.png'; this.width=27; this.height=20;">
+</button>
+<button id="menu_map" onclick="document.location='map.html'" style="display: none; position: absolute; margin-top: 430px; margin-left: 735px; background: transparent; border: none; outline: none">
+  <img src="gui/menu_map_idle.png" width="456" height="96" onmouseover="this.src='gui/menu_map_hover.png'; this.width=465; this.height=96"
+       onmouseout="this.src='gui/menu_map_idle.png'; this.width=465; this.height=96;">
+</button>
+<button id="menu_exit" style="display: none; position: absolute; margin-top: 540px; margin-left: 735px; background: transparent; border: none; outline: none">
+  <img src="gui/menu_exit_idle.png" width="456" height="96" onmouseover="this.src='gui/menu_exit_hover.png'; this.width=465; this.height=96"
+       onmouseout="this.src='gui/menu_exit_idle.png'; this.width=465; this.height=96;">
+</button>
+<button id="menu_close" onclick="ingame_menu_hide()" style="display: none; position: absolute; margin-top: 390px; margin-left: 1080px; background: transparent; border: none; outline: none">
+  <img src="gui/menu_close_idle.png" width="33" height="21" onmouseover="this.src='gui/menu_close_hover.png'; this.width=33; this.height=21"
+       onmouseout="this.src='gui/menu_close_idle.png'; this.width=33; this.height=21;">
+</button>
+<div id="last_dialog" style="display: none; position: absolute; margin-top: 20px; margin-left: 240px; background: transparent; border: none; outline: none">
+  <img src="gui/last_dialog.png" width="1450" height="800" alt="last_dialog">
+</div>
+<button id="last_dialog_close" onclick="last_dialog_hide()" style="display: none; position: absolute; margin-top: 140px; margin-left: 1520px; background: transparent; border: none; outline: none">
+  <img src="gui/menu_close_idle.png" width="33" height="21" onmouseover="this.src='gui/menu_close_hover.png'; this.width=33; this.height=21"
+       onmouseout="this.src='gui/menu_close_idle.png'; this.width=33; this.height=21;">
+</button>
+</body>
+</html>
