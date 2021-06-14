@@ -14,11 +14,29 @@
   </style>
 </head>
 <body>
-<!--write&bd-->
+<!--write-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
+  var ajaxrequest = false;
   function output_text() {
-    document.getElementById('text_box_read').innerHTML = document.getElementById('text_box_write').value
-    document.getElementById('text_box_write').value = ''
+    var post = document.getElementById('text_box_write').value
+    document.getElementById('text_box_read').innerHTML = post
+    if(ajaxrequest !== false){
+      return;
+    }
+    ajaxrequest = $("#form_write").submit(function (e) {
+      e.preventDefault();
+      $.ajax({
+        type: "POST",
+        url: "add_post.php",
+        cache: false,
+        data: {
+          textContent: document.getElementById('text_box_write').value,
+        }
+      });
+      document.getElementById('text_box_write').value = ''
+      ajaxrequest = true
+    });
   }
 </script>
 
@@ -212,7 +230,7 @@
     document.getElementById('dialog_box_read').innerHTML = '<img src="gui/night/dialogue_box_read_night.png" width="1450" height="170" alt="dialog_box"">'
   }
 </script>
-<div style="position: absolute; margin-left: 518px; margin-top: 738px;">
+<form id="form_write" style="position: absolute; margin-left: 518px; margin-top: 738px;">
   <label for="text_box_write" style="position: absolute; padding: 0">
     <textarea name="write" class="element" id="text_box_write" style="position: absolute; border: none; background: transparent; resize: none; width: 900px; height: 60px; font-family: 'Corbel Light',serif; font-size: 20px; color: navajowhite; overflow-y: scroll; overflow-x: hidden"></textarea>
   </label>
@@ -235,7 +253,7 @@
               ' onmouseout="this.src=\'gui/night/forward_idle_night.png\'; this.width=130; this.height=95;" alt="forward">'
     }
   </script>
-</div>
+</form>
 <script>
   document.write('<button id="backward" onclick="last_dialog_show()" style="position: absolute; margin-top: 820px; margin-left: 100px; background: transparent; border: none; outline: none">');
 
